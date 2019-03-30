@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/finishOrder/finishOrder",
+    "pages/orderDetail/orderDetail",
+    "pages/login/login",
+    "pages/loginfail/loginfail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#35bdb6",
+    "navigationBarTitleText": "接单小程序",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+      "color": "#a9b7b7",
+      "selectedColor": "#11cd6e",
+      "borderStyle": "black",
+      "list": [
+      {
+        "selectedIconPath": "images/LBu.png",
+        "iconPath": "images/LBm.png",
+        "pagePath": "pages/index/index",
+        "text": "队列"  
+      },
+      {
+        "selectedIconPath": "images/sddu.png",
+        "iconPath": "images/DDm.png",
+        "pagePath": "pages/finishOrder/finishOrder",
+        "text": "订单"  
+      }
+    ]  
+  }
+}

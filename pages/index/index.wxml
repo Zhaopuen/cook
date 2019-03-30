@@ -1,0 +1,110 @@
+<wxs src="./index.wxs" module="tools" />
+<!--index.wxml-->
+<view class="receipt_index">
+  <view class="container">
+    <ul class="nav_itembox">
+      <li class="nav-item {{currentActive == 0?'active':''}}" data-current="0" bindtap="tabClick">
+        <p>待完成</p>
+        <p>{{wait.count+ing.count}}</p>
+      </li>
+      <li class="nav-item {{currentActive == 1?'active':''}}" data-current="1" bindtap="tabClick">
+        <p>已完成</p>
+        <p>{{success.count}}</p>
+      </li>
+    </ul>
+    <view class="wait_finish">
+
+    <!-- 动画 -->
+    <!-- <view class="donghuabox">
+      <view wx:for="{{moveDatass}}" animation="{{ item.queueData }}" bindtap='queueClick' data-index="{{index}}" class="donghuas">{{item.name}}</view>
+    </view>   -->
+
+      <view class="wait_finishbox {{currentActive == 0?'show':'hidden'}}" bindchange="bindchange" data-current="0" wx:for="{{ing.list}}"  wx:key="{{index}}">
+        <view></view>
+          <image src="{{imghost+item.img}}"></image>
+          <view class="wait_finishtitle">
+            <text>{{item.title}}</text>
+            <span>x{{item.sum}}</span>
+            <view class="wait_finished">
+              <view bindtap='cookClick' data-id="{{item.id}}" data-status='2' class="wait_btns" animation="{{ item.queueData }}" data-index="{{item.id}}">{{tools.status(item.status)}}</view>
+            </view>
+          </view>
+  </view>
+  <view class="wait_finishbox {{currentActive == 0?'show':'hidden'}}" bindchange="bindchange" data-current="0" wx:for="{{wait.list}}"  wx:key="{{index}}">
+        <view ></view>
+          <image src="{{imghost+item.img}}"></image>
+          <view class="wait_finishtitle">
+            <text>{{item.title}}</text>
+            <view class="waitzzbox">
+              <span>x{{item.sum}}</span>
+              <view class="wait_finished">
+                <view bindtap='cookClick' data-id="{{item.id}}" data-status='1' class="wait_btns">{{tools.status(item.status)}}</view>
+              </view>
+            </view>
+          </view>
+  </view>
+  
+
+
+      <view class="wait_finishbox {{currentActive == 1?'show':'hidden'}}"  wx:for="{{success.list}}" data-current="1" >
+        <image src="{{imghost+item.img}}"></image>
+        <view class="wait_finishtitle">
+          <text>{{item.title}}</text>
+          
+          <view class="finishboxs">
+            <span>x{{item.sum}}</span>
+            <view class="wait_finished">
+              <text class="finished">{{tools.status(item.status)}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<!-- 遮罩层
+<view class="maskBox" wx:if="{{isShow}}">
+  <view class="maskClose" bindtap="maskClose">
+    <image src="../../images/close.png"></image>
+  </view>
+  <view class="maskMiddle" catchtouchmove="preventTouchMove">
+    <view class="mask_meau">
+      <text>蒜香小牛排</text>
+      <span>共 3 份</span>
+    </view>
+    <view class="mask_number" wx:for="{{maskList}}">
+      <view class="all_list_num">{{item.number}}</view>
+      <view class="mask_nums">x{{item.num}}</view>
+    </view>
+  </view>
+</view> -->
+
+<!-- 新增订单的遮罩层 -->
+<!-- <view class="mask_add" wx:if="{{addOrderShow}}" catchtouchmove="preventTouchMove">
+  <view class="mask_addMid">
+    <view class="mask_addTitle">
+      <text>新增订单</text>
+      <image src="../../images/down.png" bindtap="addCloseClick"></image>
+    </view>
+    <view wx:for="{{addList}}" class="all_list">
+      <view class="all_list_header">
+        <view class="all_list_num">{{item.number}}</view>
+        <view class="all_list_name">{{item.name}}</view>
+        <view class="all_list_time">剩余{{item.time}}分钟</view>
+      </view>
+      <view class="all_list_content">
+        <view class="all_list_listbox" wx:for="{{item.listNum}}" wx:for-item="list">
+          <view class="all_list_fanname">{{list.title}}</view>
+          <view class="all_list_number">x{{list.num}}</view>
+          <view class="all_list_addnum" catchtap='maskClcik'>+{{list.numadd}}</view>
+        </view>
+      </view>
+      <view class="all_list_finished">
+        <span>共{{item.total}}件，￥{{item.totalPrice}}</span>
+        <button bindtap="addCloseClick">接单</button>
+      </view>
+    </view>
+  </view>
+</view> -->

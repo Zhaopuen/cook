@@ -1,0 +1,15 @@
+var status = function(value)
+{
+  var status_name = "待制作";
+  if(value == 1)
+  {
+    status_name = "待完成";
+  }else if(value == 2)
+  {
+    status_name = "已完成";
+  }
+  return status_name;
+}
+module.exports = {
+  status: status,
+};

@@ -1,0 +1,55 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="order_detail">
+  <view class="order_detailList">
+    <view class="all_list_header">
+      <view class="all_list_num">17</view>
+      <view class="all_list_name">小张（信息部）</view>
+      <view class="all_list_time">11:20 下单</view>
+    </view>
+    <view class="order_detailCon">
+      <view class="order_listImg" wx:for="{{orderList}}" wx:key="index">
+        <image src="{{item.img}}" mode="aspectFill"></image>
+        <view class="order_text">
+          <text>{{item.name}}</text>
+          <span>x{{item.num}}</span>
+        </view>
+        <view class="order_listPrice">￥{{item.price}}</view>
+      </view>
+    </view>
+    <view class="order_listFooter">
+      <view class="orderList_total">
+        <text>共计4份</text>
+        <span>合计：￥52.8</span>
+      </view>
+      <view class="orderList_beizhu">备注：两人餐具，不要辣</view>
+    </view>
+  </view>
+  <view class="order_times">
+    <text>剩余15分钟</text>
+    <p>预计12:10完成</p>
+    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">电话</button> -->
+  </view>
+  <view class="order_numbers">
+    <text>订单编号</text>
+    <span>2202 9920 0080 20</span>
+  </view>
+  <view class="footer_button">
+    <span bindtap="makePhone">电话联系</span>
+    <span bindtap="remandClick">已完成，提醒取餐</span>
+  </view>
+</view>          
+ 
+<!-- 遮罩层 -->
+<view class="maskBox" wx:if="{{isShow}}">
+  <view class="maskMiddle">
+    <view class="maskMid_Img">
+      <image src="../../images/stipok.png"></image>
+      <text>已完成，提醒取餐</text>
+      <p>完成的订单，您可在首页左下角点击图标进入完成订单列表查看</p>
+    </view>
+    <view class="maskButton">
+      <text bindtap='remandCloseClick'>取消</text>
+      <text bindtap="sureClick">确定</text>
+    </view>
+  </view>
+</view>

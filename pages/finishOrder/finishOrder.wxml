@@ -1,0 +1,80 @@
+<view class="receipt_index">
+  <view class="container">
+    <!-- <view class="select_date {{currentActive == 1?'show':'hidden'}}" bindtap="dateClick">
+      <text>{{maskDate}}</text>
+      <image src="../../images/downwhite.png"></image>
+    </view> -->
+    <ul class="nav_itembox">
+      <li class="nav-item {{currentActive == 0?'active':''}}" data-current="0" bindtap="tabClick">
+        <p>未打包</p>
+        <p>{{fail_order_count}}</p>
+      </li>
+      <li class="nav-item {{currentActive == 1?'active':''}}" data-current="1" bindtap="tabClick">
+        <p>已打包</p>
+        <p>{{success_order_count}}</p>
+        
+      </li>
+    </ul>
+    <view class="wait_finish">
+      <view class="all_list {{currentActive == 0?'show':'hidden'}}" wx:for="{{fail_order}}" data-current="0">
+        <view class="all_list_header">
+          <view class="all_list_num">{{item.oid}}</view>
+          <view class="all_list_name">{{item.user_name}}({{item.user_dept}})</view>
+        </view>
+        <view class="all_list_content">
+          <view class="all_list_listbox" wx:for="{{item.order}}" wx:for-item="v">
+            <view class="all_list_fanname">{{v.menu_name}}</view>
+            <view class="all_list_number">x{{v.num}}</view>
+            <view class="dabao">{{v.status == 2?'已完成':'制作中'}}</view>
+          </view>
+        </view>
+        <view class="all_list_finished">
+          <span>共{{item.num}}件，￥{{item.money}}</span>
+
+          <view class="{{item.is_success == 1?'show':'hidden'}}" bindtap='change_success' data-order='{{item.order_id}}'>完成打包</view>
+        </view>
+      </view>
+
+      <view class="{{currentActive == 1?'show':'hidden'}}">
+        <view class="select_date {{currentActive == 1?'show':'hidden'}}" bindtap="dateClick">
+          <text>{{maskDate}}</text>
+          <image src="../../images/downwhite.png"></image>
+        </view>
+
+         <view class="all_list" wx:for="{{success_order}}" data-current="1">
+        <view class="all_list_header">
+          <view class="all_list_num">{{item.oid}}</view>
+          <view class="all_list_name">{{item.user_name}}({{item.user_dept}})</view>
+        </view>
+        <view class="all_list_content">
+          <view class="all_list_listbox"  wx:for="{{item.order}}" wx:for-item="v">
+            <view class="all_list_fanname">{{v.menu_name}}</view>
+            <view class="all_list_number">x{{v.num}}</view>
+            <view class="dabao">{{v.status == 2?'已完成':'制作中'}}</view>
+          </view>
+        </view>
+        <view class="all_list_finished">
+          <span>共{{item.num}}件，￥{{item.money}}</span>
+          <p>已打包 > </p>
+        </view>
+      </view>
+      </view>
+     
+    </view>
+
+</view>
+</view>
+
+
+
+<!-- 遮罩层 -->
+<view class="maskBox" wx:if="{{dateIsShow}}">
+  <view class="maskMiddle">
+    <view class="mask_text">
+      <view wx:for='{{maskText}}' data-current="{{index}}" class="hua {{currentActivezz === index?'active':''}}" data-name='{{item.date}}' data-day='{{item.day}}' bindtap='select' >
+        <text class='yuzhong'>{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
